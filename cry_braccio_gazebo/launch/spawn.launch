@@ -1,0 +1,15 @@
+<launch>
+	 <!-- <group ns="/braccio">  -->
+  <!-- Spawn a robot into Gazebo --> 
+  		<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file /home/crynin/catkin_ws/src/cry_braccio_description/urdf/braccio_arm.urdf -urdf -model braccio" />
+
+  		<!-- Load Controllers -->
+  		<rosparam command="load" file="/home/crynin/catkin_ws/src/cry_braccio_description/config/joints.yaml" /> 
+
+  		<!-- Controllers -->
+  		<node name="Controller_spawner" pkg="controller_manager" type="spawner"
+  			respawn="false" output="screen" 
+  			args="joint_state_controller joint1_position_controller joint2_position_controller joint3_position_controller joint4_position_controller joint5_position_controller joint6_position_controller joint7_position_controller --timeout 60" /> 
+	 <!-- </group> -->
+
+</launch>

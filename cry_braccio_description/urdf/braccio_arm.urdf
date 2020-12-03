@@ -1,0 +1,519 @@
+<?xml version="1.0"?>
+<robot name="braccio">
+
+    <link name = "world"/>
+
+    <joint name="world_joint" type="fixed">
+        <parent link ="world" />
+        <child link="base_link" />
+    </joint>
+
+
+    <link name="base_link">
+        <mass value="1024" />
+        <visual>
+            <geometry>
+                <cylinder length="0.01" radius="0.053" />
+            </geometry>
+            <material name="black" />
+            <origin rpy="0 0 0" xyz="0 0 0" />
+        </visual>
+
+         <collision>
+            <geometry>
+                <cylinder length="0.01" radius="0.053" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0"/>
+        </inertial>
+    </link>
+
+    <link name="braccio_base_link">
+        <mass value="1024" />
+        <visual>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="orange" />
+            <origin rpy="0 0 3.1416" xyz="0 0.004 0" />
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 0 3.1416" xyz="0 0.004 0" />
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0"/>
+        </inertial>
+    </link>
+
+    <link name="shoulder_link">
+        <mass value="1024" />
+        <visual>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_shoulder.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="orange" />
+            <origin rpy="0 0 0" xyz="-0.0045 0.0055 -0.026" />
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_shoulder.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="-0.0045 0.0055 -0.026" />
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0"/>
+        </inertial>
+    </link>
+
+    <link name="elbow_link">
+        <mass value="1024" />
+        <visual>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_elbow.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="orange" />
+            <origin rpy="0 0 0" xyz="-0.0045 0.005 -0.025" />
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_elbow.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="-0.0045 0.005 -0.025" />
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0"/>
+        </inertial>
+
+    </link>
+
+    <link name="wrist_pitch_link">
+        <mass value="1024" />
+        <visual>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_wrist_pitch.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="orange" />
+            <origin rpy="0 0 0" xyz="0.003 -0.0004 -0.024" />
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_wrist_pitch.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0.003 -0.0004 -0.024" />
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0"/>
+        </inertial>
+    </link>
+
+    <link name="wrist_roll_link">
+        <mass value="1024" />
+        <visual>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_wrist_roll.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="white" />
+            <origin rpy="0 0 0" xyz="0.006 0 0.0" />
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_wrist_roll.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0.006 0 0.0" />
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0"/>
+        </inertial>
+    </link>
+
+    <link name="left_gripper_link">
+        <mass value="1024" />
+        <visual>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_left_gripper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="white" />
+            <origin rpy="0 1.5708 0" xyz="0 -0.012 0" />
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_left_gripper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 1.5708 0" xyz="0 -0.012 0" />
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0"/>
+        </inertial>
+    </link>
+
+    <link name="right_gripper_link">
+        <mass value="1024" />
+        <visual>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_right_gripper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="white" />
+            <origin rpy="0 1.5708 0" xyz="0 -0.012 0.010" />
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://cry_braccio_description/meshes/braccio_right_gripper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 1.5708 0" xyz="0 -0.012 0.010" />
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0"
+                izz="1.0"/>
+        </inertial>
+    </link>
+
+    <joint name="base_joint" type="revolute">
+        <axis xyz="0 0 -1" />
+        <limit effort="1000.0" lower="0.0" upper="3.1416" velocity="1.0" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="base_link" />
+        <child link="braccio_base_link" />
+    </joint>
+
+    <transmission name = "trans_base_joint" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_base_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+
+    <joint name="shoulder_joint" type="revolute">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="0.2618" upper="2.8798" velocity="1.0" />
+        <origin rpy="-1.5708 0 0" xyz="0 -0.002 0.072" />
+        <parent link="braccio_base_link" />
+        <child link="shoulder_link" />
+    </joint>
+
+    <transmission name = "trans_shoulder_joint" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="shoulder_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_shoulder_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <joint name="elbow_joint" type="revolute">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="0" upper="3.1416" velocity="1.0" />
+        <origin rpy="-1.5708 0 0" xyz="0 0 0.125" />
+        <parent link="shoulder_link" />
+        <child link="elbow_link" />
+    </joint>
+
+    <transmission name = "trans_elbow_joint" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="elbow_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_elbow_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <joint name="wrist_pitch_joint" type="revolute">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="0" upper="3.1416" velocity="1.0" />
+        <origin rpy="-1.5708 0 0" xyz="0 0 0.125" />
+        <parent link="elbow_link" />
+        <child link="wrist_pitch_link" />
+    </joint>
+
+    <transmission name = "trans_wrist_pitch_joint" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist_pitch_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_wrist_pitch_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <joint name="wrist_roll_joint" type="revolute">
+        <axis xyz="0 0 -1" />
+        <limit effort="1000.0" lower="0.0" upper="3.1416" velocity="1.0" />
+        <origin rpy="0 0 0" xyz="0 0.0 0.06" />
+        <parent link="wrist_pitch_link" />
+        <child link="wrist_roll_link" />
+    </joint>
+
+    <transmission name = "trans_wrist_roll_joint" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist_roll_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_roll_pitch_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <joint name="gripper_joint" type="revolute">
+        <axis xyz="0 -1 0" />
+        <limit effort="1000.0" lower="1.217" upper="1.5708" velocity="1.0" />
+        <origin rpy="0 0 0" xyz="0.010 0 0.03" />
+        <parent link="wrist_roll_link" />
+        <child link="right_gripper_link" />
+    </joint>
+
+    <transmission name = "trans_gripper_joint" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="gripper_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_gripper_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <joint name="sub_gripper_joint" type="revolute">
+        <axis xyz="0 1 0" />
+        <mimic joint="gripper_joint" />
+        <limit effort="1000.0" lower="1.5708" upper="2.7876" velocity="1.0" />
+        <origin rpy="0 3.1416 0" xyz="-0.010 0 0.03" />
+        <parent link="wrist_roll_link" />
+        <child link="left_gripper_link" />
+    </joint>
+
+    <transmission name = "trans_sub_gripper_joint" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="sub_gripper_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_sub_gripper_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <material name="orange">
+        <color rgba="0.57 0.17 0.0 1" />
+    </material>
+    <material name="white">
+        <color rgba="0.8 0.8 0.8 1.0" />
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 0.50" />
+    </material>
+
+
+<!-- Rpi Camera Joint Effort -->
+  <joint name="camera_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="-0.052 0.0 0.0" rpy="0 0 0"/> 
+    <parent link="left_gripper_link"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <link name="camera_link"/>
+
+  <!-- TOF Distance sensor Effort -->
+
+  <joint name="ir_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin rpy="0 0 0" xyz="0.0 0 0.01" />
+    <parent link="camera_link"/>
+    <child link="tof_link"/>
+  </joint>
+
+  <link name="tof_link"/>
+
+
+
+<!-- camera -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="raspicam">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.02974</horizontal_fov>
+        <image>
+          <width>1920</width>
+          <height>1080</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>camera/color</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+  <gazebo reference="tof_link">
+     <sensor type="ray" name="lidar">
+          <pose>0.25 0 0 0 0 0</pose>
+          <update_rate>5</update_rate>
+          <ray>
+            <range>
+              <min>0.01</min>
+              <max>0.50</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+            <gaussianNoise>0.005</gaussianNoise>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>5</updateRate>
+            <topicName>tof_data</topicName>
+            <frameName>tof_link</frameName>
+            <fov>0.05</fov>
+            <radiation>ir</radiation>
+          </plugin>
+        </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <!-- <robotParam>/braccio</robotParam> -->
+    </plugin>
+  </gazebo>
+
+  <!-- Link1 -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- Link2 -->
+  <gazebo reference="braccio_base_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- Link3 -->
+  <gazebo reference="shoulder_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <gazebo reference="elbow_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <gazebo reference="wrist_pitch_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <gazebo reference="wrist_roll_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="left_gripper_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="right_gripper_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/White</material>
+  </gazebo>
+
+
+</robot>
