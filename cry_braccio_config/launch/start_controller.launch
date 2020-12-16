@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="use_gui" default="false" />
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find cry_braccio_config)/config/ros_controllers.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" 
+          args="joint_state_controller braccio_arm_controller hand_controller --timeout 20"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="$(arg use_gui)"/>
+    <rosparam param="source_list">[/joint_states]</rosparam>
+  </node>
+
+</launch>

@@ -1,0 +1,14 @@
+controller_list:
+  - name: braccio_arm_controller
+    joints:
+      - base_joint
+      - shoulder_joint
+      - elbow_joint
+      - wrist_pitch_joint
+      - wrist_roll_joint
+  - name: hand_controller
+    joints:
+      - gripper_joint
+initial:  # Define initial robot poses.
+  - group: braccio_arm
+    pose: default

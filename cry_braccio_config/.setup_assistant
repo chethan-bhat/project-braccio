@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: cry_braccio_description
+    relative_path: urdf/braccio_arm.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/braccio.srdf
+  CONFIG:
+    author_name: Chethan T Bhat
+    author_email: chethantbhat@gmail.com
+    generated_timestamp: 1608094865

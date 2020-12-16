@@ -106,15 +106,17 @@ public:
         int label_id = msg->data[0];
         int startX = msg->data[1];
         int startY = msg->data[2];
-        int endX = msg->data[3];
-        int endY = msg->data[4];
+        int radius = msg->data[3];
+        //int endX = msg->data[3];
+        //int endY = msg->data[4];
 
-        camera_current_x = (endX + startX) / 2.0;
-        camera_current_y = (endY + startY) / 2.0;
+        //camera_current_x = (endX + startX) / 2.0;
+        //camera_current_y = (endY + startY) / 2.0;
 
         double image_area = camera_width * camera_height;
 
-        box_area = ((endX - startX) * (endY - startY)) / image_area;
+        //box_area = ((endX - startX) * (endY - startY)) / image_area;
+        box_area = (3.14*radius*radius);
         bounding_box_updated = true;
     }
 
