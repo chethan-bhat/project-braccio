@@ -15,6 +15,7 @@ hardware_interface:
     - wrist_pitch_joint
     - wrist_roll_joint
     - gripper_joint
+    - sub_gripper_joint
   sim_control_mode: 1  # 0: position, 1: velocity
 # Publish all joint states
 # Creates the /joint_states topic necessary in ROS
@@ -38,6 +39,7 @@ controller_list:
     type: FollowJointTrajectory
     joints:
       - gripper_joint
+      - sub_gripper_joint
 braccio_arm_controller:
   type: effort_controllers/JointTrajectoryController
   joints:
@@ -76,8 +78,14 @@ hand_controller:
   type: effort_controllers/JointTrajectoryController
   joints:
       - gripper_joint
+      - sub_gripper_joint
   gains:
     gripper_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    sub_gripper_joint:
       p: 100
       d: 1
       i: 1
